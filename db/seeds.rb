@@ -8,10 +8,11 @@
 
 VeterinaryOffice.destroy_all
 Veterinarian.destroy_all
-Shelter.destroy_all
-Pet.destroy_all
-Application.destroy_all
 ApplicationPet.destroy_all
+Pet.destroy_all
+Shelter.destroy_all
+Application.destroy_all
+
 
 @vet_office_1 = VeterinaryOffice.create(name: 'Special Friends', boarding_services: true, max_patient_capacity: 100)
 @vet_office_2 = VeterinaryOffice.create(name: 'Pet Emergency Room', boarding_services: true, max_patient_capacity: 50)
@@ -26,8 +27,8 @@ ApplicationPet.destroy_all
 @pet_2= @shelter_1.pets.create(name: 'Clawdia', breed: 'shorthair', age: 3, adoptable: true)
 @pet_3= @shelter_3.pets.create(name: 'Lucille Bald', breed: 'sphynx', age: 8, adoptable: true)
 @app_1 = Application.create!(name_of_applicant: 'Joey', street_address: '1150 vine', city: "Denver", state: "Colorado", zip_code: 80206, description: "i am full of love and have alot of space", status: "In Progress" )
-@app_2 = Application.create(name_of_applicant: 'Joey', street_address: '1150 larimer', city: "Denver", state: "Colorado", zip_code: 80211, description: "i am full of love and have alot of space", status: "Pending" )
-@app_3 = Application.create(name_of_applicant: 'Joey', street_address: '1150 dayton', city: "Aurora", state: "Colorado", zip_code: 80222, description: "i am full of love and have alot of space", status: "Rejected" )
+@app_2 = Application.create(name_of_applicant: 'Steve', street_address: '1150 larimer', city: "Denver", state: "Colorado", zip_code: 80211, description: "i am full of love and have alot of space", status: "Pending" )
+@app_3 = Application.create(name_of_applicant: 'Bart', street_address: '1150 dayton', city: "Aurora", state: "Colorado", zip_code: 80222, description: "i am full of love and have alot of space", status: "Rejected" )
 @ap_1= ApplicationPet.create!(pet_id: @pet_1.id, application_id: @app_1.id)
 @ap_2= ApplicationPet.create!(pet_id: @pet_1.id, application_id: @app_2.id)
 @ap_3= ApplicationPet.create!(pet_id: @pet_2.id, application_id: @app_1.id)

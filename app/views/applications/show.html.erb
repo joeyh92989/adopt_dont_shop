@@ -1,14 +1,39 @@
 <h1><%= @application.name_of_applicant %></h1>
 <p>Rank: <%= @application.name_of_applicant %></p>
-<p>City: <%= @application.street_address %></p>
+<p>Street_address: <%= @application.street_address %></p>
 <p>City: <%= @application.city %></p>
-<p>City: <%= @application.state %></p>
-<p>City: <%= @application.zip_code %></p>
-<p>City: <%= @application.description %></p>
-<p>City: <%= @application.status %></p>
+<p>State: <%= @application.state %></p>
+<p>Zip Code: <%= @application.zip_code %></p>
+<p>Description: <%= @application.description %></p>
+<p>Status: <%= @application.status %></p>
 
+<div>
+<%if @application.status == "In Progress"%>
+<h2>Add a Pet to this Application</h2>
+  <%= form_with url: "/applications/#{@application.id}", method: :get, local: true do |f| %>
+    <%= f.label :search %>
+    <%= f.text_field :search %>
+    <%= f.submit "Search" %>
+  <% end %>
+<%else%>
+<%end%>
+</div>
+<div>
+<%if defined?(@pet_search)%>
+<div>
+<%@pet_search.each do|pet_result|%>
+  <div id="pet_result-<%= pet_result.id %>">
+    <span><%=link_to "#{pet_result.name}", "/pets/#{pet_result.id}"%>
+    <%= button_to "Adopt this pet", "/applications/#{@application.id}", method: :post, params: { pet_id: pet_result.id, application_id: @application.id } %></span>
+  </div>
+  <%end%>
+</div>
+<%end%>
+</div>
+<br>
+<h2>Pets On Application </h2>
 <% @pets.each do |pet| %>
   <div id="pet-<%= pet.id %>">
-    <h3><%= pet.name %></h3>
+    <h4><%=link_to "#{pet.name}", "/pets/#{pet.id}" %></h4>
   </div>
 <% end %>

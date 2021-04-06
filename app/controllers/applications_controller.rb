@@ -3,8 +3,14 @@ class ApplicationsController < ApplicationController
     @applications= Application.all
   end
   def show
+    if params[:search].present?
+      @application = Application.find(params[:id])
+      @pet_search = Pet.search(params[:search])
+      @pets = @application.pets
+    else
     @application = Application.find(params[:id])
     @pets = @application.pets
+    end
   end
   def new
     
