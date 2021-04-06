@@ -1,0 +1,14 @@
+<h1><%= @application.name_of_applicant %></h1>
+<p>Rank: <%= @application.name_of_applicant %></p>
+<p>City: <%= @application.street_address %></p>
+<p>City: <%= @application.city %></p>
+<p>City: <%= @application.state %></p>
+<p>City: <%= @application.zip_code %></p>
+<p>City: <%= @application.description %></p>
+<p>City: <%= @application.status %></p>
+
+<% @pets.each do |pet| %>
+  <div id="pet-<%= pet.id %>">
+    <h3><%= pet.name %></h3>
+  </div>
+<% end %>

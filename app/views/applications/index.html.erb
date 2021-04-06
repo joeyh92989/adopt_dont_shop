@@ -1,0 +1,7 @@
+<h1>All Applications</h1>
+
+<% @applications.each do |application| %>
+  <div id="application-<%= application.id %>">
+    <h3><%= application.name_of_applicant %></h3>
+  </div>
+<% end %>
