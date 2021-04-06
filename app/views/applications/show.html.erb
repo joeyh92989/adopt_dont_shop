@@ -22,8 +22,10 @@
 <%if defined?(@pet_search)%>
 <div>
 <%@pet_search.each do|pet_result|%>
-<div id="pet_result-<%= pet_result.id %>">
-    <h4><%=link_to "#{pet_result.name}", "/pets/#{pet_result.id}" %></h4>
+  <div id="pet_result-<%= pet_result.id %>">
+    <span><%=link_to "#{pet_result.name}", "/pets/#{pet_result.id}"%>
+    <%= button_to "Adopt this pet", "/applications/#{@application.id}", method: :post, params: { pet_id: pet_result.id, application_id: @application.id } %></span>
+  </div>
   <%end%>
 </div>
 <%end%>
