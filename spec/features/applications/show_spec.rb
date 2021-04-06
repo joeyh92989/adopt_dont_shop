@@ -16,7 +16,7 @@ RSpec.describe 'the application index' do
     ApplicationPet.create!(pet_id: @pet_2.id, application_id: @app_1.id)
 
   end
-  it 'lists all the applications ' do
+  it 'lists all the fields ' do
     
     visit "/applications/#{@app_1.id}"
 
@@ -34,5 +34,10 @@ RSpec.describe 'the application index' do
     within "#pet-#{@pet_2.id}" do
       expect(page).to have_content(@pet_2.name)
     end
+  end
+  it 'has a text box to find pets' do
+    visit "/applications/#{@app_1.id}"
+    save_and_open_page
+    expect(page).to have_button("Search")
   end
 end

@@ -2,6 +2,6 @@
 
 <% @applications.each do |application| %>
   <div id="application-<%= application.id %>">
-    <h3><%= application.name_of_applicant %></h3>
+  <%= link_to "#{application.name_of_applicant}", "applications/#{application.id}" %>
   </div>
 <% end %>
