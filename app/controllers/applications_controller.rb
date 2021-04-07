@@ -3,6 +3,7 @@ class ApplicationsController < ApplicationController
     @applications= Application.all
   end
   def show
+    
     if params[:search].present?
       @application = Application.find(params[:id])
       @pet_search = Pet.search(params[:search])
@@ -17,13 +18,17 @@ class ApplicationsController < ApplicationController
   end
 
   def create
-    application = Application.create!(application_params)
-    application.save
-    redirect_to "/applications/#{application.id}"
+    application = Application.new(application_params)
+    if application.save
+      redirect_to "/applications/#{application.id}"
+    else
+      flash[:error]= application.errors.full_messages.to_sentence
+      render :new
+    end
   end
 
   def update
-    binding.pry
+
     application = Application.find(params[:id])
     application.update!(application_params)
     redirect_to "/applications/#{application.id}"
