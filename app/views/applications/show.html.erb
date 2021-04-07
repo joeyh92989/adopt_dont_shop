@@ -24,7 +24,7 @@
 <%@pet_search.each do|pet_result|%>
   <div id="pet_result-<%= pet_result.id %>">
     <span><%=link_to "#{pet_result.name}", "/pets/#{pet_result.id}"%>
-    <%= button_to "Adopt this pet", "/applications/#{@application.id}", method: :post, params: { pet_id: pet_result.id, application_id: @application.id } %></span>
+    <%= button_to "Adopt this pet", "/applications/#{@application.id}/create", method: :post, params: { pet_id: pet_result.id, application_id: @application.id }, controller: "application_pets" %></span>
   </div>
   <%end%>
 </div>
@@ -37,3 +37,15 @@
     <h4><%=link_to "#{pet.name}", "/pets/#{pet.id}" %></h4>
   </div>
 <% end %>
+
+<%if @pets.count != 0%>
+<div>
+<h2> Submit Application</h2>
+<%= form_with url: "/applications/#{@application.id}", method: :patch,  local: true do |f| %>
+    <h3>Why would you be a good applicant?</h3>
+    <%= f.text_area :description %>
+    <%= hidden_field_tag 'status', 'Pending'  %>
+    <%= f.submit "Submit Application"%>
+  <% end %>
+<%end%>
+</div>

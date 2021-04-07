@@ -37,7 +37,6 @@ RSpec.describe 'the application index' do
   end
   it 'has a text box to find pets' do
     visit "/applications/#{@app_1.id}"
-    save_and_open_page
     expect(page).to have_button("Search")
   end
 end
