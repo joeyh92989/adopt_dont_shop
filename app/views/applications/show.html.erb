@@ -37,3 +37,15 @@
     <h4><%=link_to "#{pet.name}", "/pets/#{pet.id}" %></h4>
   </div>
 <% end %>
+
+<%if @pets.count != 0%>
+<div>
+<h2> Submit Application</h2>
+<%= form_with url: "/applications/#{@application.id}", method: :patch,  local: true do |f| %>
+    <h3>Why would you be a good applicant?</h3>
+    <%= f.text_area :description %>
+    <%= hidden_field_tag 'status', 'Pending'  %>
+    <%= f.submit "Submit Application"%>
+  <% end %>
+<%end%>
+</div>
