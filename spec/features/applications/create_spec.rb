@@ -43,7 +43,6 @@ RSpec.describe 'application creation' do
         fill_in 'City', with: 'Denver'
         fill_in 'State', with: 'Colorado'
         fill_in 'Zip code', with: 80206
-        fill_in 'Description', with: "I have a big backyard"
         click_button 'Save'
 
 

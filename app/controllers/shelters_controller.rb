@@ -59,6 +59,10 @@ class SheltersController < ApplicationController
     redirect_to '/shelters'
   end
 
+  def admin
+    @shelters= Shelter.all
+  end
+
   private
 
   def shelter_params
