@@ -59,6 +59,11 @@ class SheltersController < ApplicationController
     redirect_to '/shelters'
   end
 
+  def admin
+    binding.pry
+    @shelters= Shelter.all
+  end
+
   private
 
   def shelter_params
