@@ -29,7 +29,6 @@ RSpec.describe 'application creation' do
       expect(find('form')).to have_content('City')
       expect(find('form')).to have_content('State')
       expect(find('form')).to have_content('Zip code')
-      expect(find('form')).to have_content('Description')
     end
   end
   describe 'the application create' do

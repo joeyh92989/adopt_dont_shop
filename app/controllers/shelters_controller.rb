@@ -60,6 +60,7 @@ class SheltersController < ApplicationController
   end
 
   def admin
+    binding.pry
     @shelters= Shelter.all
   end
 
