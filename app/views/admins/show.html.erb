@@ -12,9 +12,9 @@
 <% @pets.each do |pet| %>
   <div id="pet-<%= pet.id %>">
     <h4><%=link_to "#{pet.name}", "/pets/#{pet.id}" %></h4>
-    <%# <%if  ApplicationPet.where('pet_id = ? AND application_id = ?',pet.id,@application.id)).status = "In Progress"%> %>
+    <%if @application.application_pets.where('pet_id = ?',"#{pet.id}").first.status == "In Progress"%>
       <%= button_to "Approve", "/admin/applications/#{@application.id}/update", method: :patch, params: { pet_id: pet.id, application_id: @application.id, status: 'Approve' } %>
-    <%# <%else%> %>
-    <%# <h4>Approved</h4> %>
-    <%# <%end%> %>
+    <%else%>
+    <h4>Approved</h4>
+    <%end%>
 <% end %>
