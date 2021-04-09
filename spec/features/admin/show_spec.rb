@@ -21,9 +21,12 @@ RSpec.describe 'the admin application- show' do
 
   it "shows the approve button for each pet on an application" do
       
-    visit "admin/applications/ #{@app_1.id}"
+    visit "admin/applications/#{@app_1.id}"
       
-    within "#shelter-#{@shelter_1.id}" do
+    within "#pet-#{@pet_1.id}" do
+      expect(page).to have_button("Approve")
+    end
+    within "#pet-#{@pet_2.id}" do
       expect(page).to have_button("Approve")
     end
   end
