@@ -1,0 +1,20 @@
+<h1>Admin</h1>
+<p>Name: <%= @application.name_of_applicant %></p>
+<p>Street_address: <%= @application.street_address %></p>
+<p>City: <%= @application.city %></p>
+<p>State: <%= @application.state %></p>
+<p>Zip Code: <%= @application.zip_code %></p>
+<p>Description: <%= @application.description %></p>
+<p>Status: <%= @application.status %></p>
+
+<br>
+<h2>Pets On Application </h2>
+<% @pets.each do |pet| %>
+  <div id="pet-<%= pet.id %>">
+    <h4><%=link_to "#{pet.name}", "/pets/#{pet.id}" %></h4>
+    <%# <%if  ApplicationPet.where('pet_id = ? AND application_id = ?',pet.id,@application.id)).status = "In Progress"%> %>
+      <%= button_to "Approve", "/admin/applications/#{@application.id}/update", method: :patch, params: { pet_id: pet.id, application_id: @application.id, status: 'Approve' } %>
+    <%# <%else%> %>
+    <%# <h4>Approved</h4> %>
+    <%# <%end%> %>
+<% end %>
