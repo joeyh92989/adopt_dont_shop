@@ -11,7 +11,7 @@ class AdminsController < ApplicationController
   end
 
   def update
-    binding.pry
+
     app = Application.find(params[:application_id])
     pet = Pet.find(params[:pet_id])
     application_pet= ApplicationPet.where('pet_id = ? AND application_id = ?',pet.id,app.id)

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Adopt, Don't Shop</title>
+      <title>Adopt, Don't Shop</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -9,19 +9,20 @@
     <%= stylesheet_link_tag 'application', media: 'all' %>
   </head>
 
-  <body>
+  <body class="mainbody">
     <% flash.each do |type, msg| %>
       <div>
         <%= msg %>
       </div>
     <% end %>
-    <section>
+    <section class = "navbar">
       <p><%= link_to "Pets", "/pets" %></p>
       <p><%= link_to "Shelters", "/shelters" %></p>
       <p><%= link_to "Veterinarians", "/veterinarians" %></p>
       <p><%= link_to "Veterinary Offices", "/veterinary_offices" %></p>
+      <p><%= link_to "Applications", "/applications" %></p>
+      <p><%= link_to "Admin Shelters", "/admin/shelters" %></p>
     </section>
-    
+    <title>Adopt, Don't Shop</title>
     <%= yield %>
   </body>
-</html>

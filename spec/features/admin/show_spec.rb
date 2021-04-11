@@ -34,12 +34,30 @@ RSpec.describe 'the admin application- show' do
   it "when i select the approve button, it becomes approved" do
       
     visit "admin/applications/#{@app_1.id}"
-      
+
     within "#pet-#{@pet_1.id}" do
-      expect(page).to have_button("Approve")
+      click_on('Approve')
+      expect(page).to have_content("Approved")
     end
     within "#pet-#{@pet_2.id}" do
-      expect(page).to have_button("Approve")
+      click_on('Approve')
+      expect(page).to have_content("Approved")
+    end
+  end
+
+  it "when i select the approve button, it becomes approved" do
+      
+    visit "admin/applications/#{@app_1.id}"
+    
+    within "#pet-#{@pet_1.id}" do
+      expect(page).to have_button("Reject")
+      click_on('Reject')
+      expect(page).to have_content("Rejected")
+    end
+    within "#pet-#{@pet_2.id}" do
+      expect(page).to have_button("Reject")
+      click_on('Reject')
+      expect(page).to have_content("Rejected")
     end
   end
 end

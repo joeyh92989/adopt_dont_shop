@@ -13,11 +13,12 @@
   <div id="pet-<%= pet.id %>">
     <h4><%=link_to "#{pet.name}", "/pets/#{pet.id}" %></h4>
     <%if @application.application_pets.where('pet_id = ?',"#{pet.id}").first.status == "In Progress"%>
-      <%= button_to "Approve", "/admin/applications/#{@application.id}/update", method: :patch, params: { pet_id: pet.id, application_id: @application.id, status: 'Approve' } %>
+      <%= button_to "Approve", "/admin/applications/#{@application.id}/update", method: :patch, params: { pet_id: pet.id, application_id: @application.id, status: 'Approved' } %>
       <%= button_to "Reject", "/admin/applications/#{@application.id}/update", method: :patch, params: { pet_id: pet.id, application_id: @application.id, status: 'Rejected' } %>
     <%elsif @application.application_pets.where('pet_id = ?',"#{pet.id}").first.status == "Approved"%>
-    <h4>Approved</h4>
+      <h4>Approved</h4>
     <%else%>
-    <h4>Rejected</h4>
+      <h4>Rejected</h4>
     <%end%>
+    </div>
 <% end %>
